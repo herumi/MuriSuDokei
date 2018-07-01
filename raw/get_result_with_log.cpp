@@ -5,6 +5,7 @@
 #include <sstream>
 #include <vector>
 #include <iomanip>
+#include "mie/string.hpp"
 
 using namespace std;
 
@@ -31,6 +32,16 @@ const string ERROR_SUFFIX  = "-error";
 const string MAX_SUFFIX    = "-max";
 
 int find_place(const string& irrational_value, const string& time){
+#if 1
+    const char *begin = irrational_value.c_str();
+    const char *end = begin + irrational_value.size();
+    const char *p = mie::findStr(begin, end, time.c_str(), time.size());
+    if (p != end) {
+        return int(p - begin);
+    } else {
+        return -1;
+    }
+#else
 
 	string::size_type position = irrational_value.find(time);
 
@@ -40,6 +51,7 @@ int find_place(const string& irrational_value, const string& time){
 
 //	cout << "find position is ... " << position << endl;
 	return position;
+#endif
 }
 
 string get_digit_seq(const string& irrational_value, int current_pos){
