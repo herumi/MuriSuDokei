@@ -9,7 +9,7 @@
 
 using namespace std;
 
-int MAX_HOUR   = 4;
+int MAX_HOUR   = 24;
 int MAX_MINUTE = 60;
 int MAX_SECOND = 60;
 
