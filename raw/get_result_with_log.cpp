@@ -30,7 +30,7 @@ const string RESULT_SUFFIX = "-result";
 const string ERROR_SUFFIX  = "-error";
 const string MAX_SUFFIX    = "-max";
 
-int find_place(string irrational_value, string time){
+int find_place(const string& irrational_value, const string& time){
 
 	string::size_type position = irrational_value.find(time);
 
@@ -42,7 +42,7 @@ int find_place(string irrational_value, string time){
 	return position;
 }
 
-string get_digit_seq(string irrational_value, int current_pos){
+string get_digit_seq(const string& irrational_value, int current_pos){
 	if(current_pos - HEAD_LENGTH > 0){
 		return irrational_value.substr(current_pos-HEAD_LENGTH, HEAD_LENGTH+TIME_LENGTH+TAIL_LENGTH);
 	}
