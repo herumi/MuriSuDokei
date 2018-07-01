@@ -8,9 +8,6 @@
 
 using namespace std;
 
-int find_place(string irrational_value, string time);
-string get_digit_seq(string irrational_value, int current_pos);
-
 int MAX_HOUR   = 4;
 int MAX_MINUTE = 60;
 int MAX_SECOND = 60;
@@ -32,6 +29,27 @@ const string CSV_EXTENTION = ".csv";
 const string RESULT_SUFFIX = "-result";
 const string ERROR_SUFFIX  = "-error";
 const string MAX_SUFFIX    = "-max";
+
+int find_place(string irrational_value, string time){
+
+	string::size_type position = irrational_value.find(time);
+
+	if(position == string::npos){
+		return -1;
+	}
+
+//	cout << "find position is ... " << position << endl;
+	return position;
+}
+
+string get_digit_seq(string irrational_value, int current_pos){
+	if(current_pos - HEAD_LENGTH > 0){
+		return irrational_value.substr(current_pos-HEAD_LENGTH, HEAD_LENGTH+TIME_LENGTH+TAIL_LENGTH);
+	}
+	else{
+		return irrational_value.substr(0, HEAD_LENGTH+TIME_LENGTH+TAIL_LENGTH);
+	}
+}
 
 int main(int argc, char *argv[]){
 	string FILE_PREFIX = PI_FILE_PREFIX;
@@ -113,26 +131,5 @@ int main(int argc, char *argv[]){
 	min_max_file << "max_position: " << max_pos << endl;
 	min_max_file << "max_value: " << max_value << endl;
 	return 0;
-}
-
-int find_place(string irrational_value, string time){
-
-	string::size_type position = irrational_value.find(time);
-
-	if(position == string::npos){
-		return -1;
-	}
-
-//	cout << "find position is ... " << position << endl;
-	return position;
-}
-
-string get_digit_seq(string irrational_value, int current_pos){
-	if(current_pos - HEAD_LENGTH > 0){
-		return irrational_value.substr(current_pos-HEAD_LENGTH, HEAD_LENGTH+TIME_LENGTH+TAIL_LENGTH);
-	}
-	else{
-		return irrational_value.substr(0, HEAD_LENGTH+TIME_LENGTH+TAIL_LENGTH);
-	}
 }
 
