@@ -11,7 +11,7 @@ using namespace std;
 int find_place(string irrational_value, string time);
 string get_digit_seq(string irrational_value, int current_pos);
 
-int MAX_HOUR   = 24;
+int MAX_HOUR   = 4;
 int MAX_MINUTE = 60;
 int MAX_SECOND = 60;
 
@@ -79,6 +79,7 @@ int main(int argc, char *argv[]){
 		ostringstream hour_out;
 		hour_out << setfill('0') << setw(2) << hour;
 		hour_part = hour_out.str();
+        cout << "hour " << hour << std::endl;
 
 		for(int minute = 0; minute < MAX_MINUTE; ++minute){
 			ostringstream minute_out;
@@ -91,7 +92,7 @@ int main(int argc, char *argv[]){
 				second_part = second_out.str();
 				time = hour_part+minute_part+second_part;
 
-				cout << "current value is ...." << time << endl;
+//				cout << "current value is ...." << time << endl;
 				current_pos = find_place(irrational_value, time);
 				if(current_pos == -1){
  					error_file << time << endl;
@@ -122,7 +123,7 @@ int find_place(string irrational_value, string time){
 		return -1;
 	}
 
-	cout << "find position is ... " << position << endl;
+//	cout << "find position is ... " << position << endl;
 	return position;
 }
 
